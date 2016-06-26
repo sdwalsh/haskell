@@ -45,9 +45,15 @@ matches x y = sum $ map (uncurry min) $ zip (countColors x) (countColors y)
 
 -- Exercise 3 -----------------------------------------
 
+-- Count number of matches between number of matches and exact matches
+nonExactMatches :: Code -> Code -> Int
+nonExactMatches xs ys = matches xs ys - exactMatches xs ys
+
 -- Construct a Move from a guess given the actual code
 getMove :: Code -> Code -> Move
-getMove = undefined
+getMove xs ys = Move ys x y
+    where x = exactMatches xs ys
+          y = nonExactMatches xs ys
 
 -- Exercise 4 -----------------------------------------
 
