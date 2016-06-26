@@ -65,7 +65,7 @@ isConsistent (Move guess xs ys) guess' = xs == x && ys == y
 -- Exercise 5 -----------------------------------------
 
 filterCodes :: Move -> [Code] -> [Code]
-filterCodes = undefined
+filterCodes move codes = [ x | x <- codes, isConsistent move x ]
 
 -- Exercise 6 -----------------------------------------
 
