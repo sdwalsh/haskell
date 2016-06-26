@@ -58,7 +58,9 @@ getMove xs ys = Move ys x y
 -- Exercise 4 -----------------------------------------
 
 isConsistent :: Move -> Code -> Bool
-isConsistent = undefined
+isConsistent (Move guess xs ys) guess' = xs == x && ys == y
+    where x = exactMatches guess guess'
+          y = nonExactMatches guess guess'
 
 -- Exercise 5 -----------------------------------------
 
