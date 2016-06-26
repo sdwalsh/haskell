@@ -21,9 +21,13 @@ colors = [Red, Green, Blue, Yellow, Orange, Purple]
 
 -- Exercise 1 -----------------------------------------
 
+-- Get the equality of a pair of pegs
+pairPegsEq :: (Peg, Peg) -> Bool
+pairPegsEq (x,y) = x == y
+
 -- Get the number of exact matches between the actual code and the guess
 exactMatches :: Code -> Code -> Int
-exactMatches = undefined
+exactMatches x y = length $ filter id $ map pairPegsEq $ zip x y
 
 -- Exercise 2 -----------------------------------------
 
