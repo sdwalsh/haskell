@@ -31,13 +31,17 @@ exactMatches x y = length $ filter id $ map pairPegsEq $ zip x y
 
 -- Exercise 2 -----------------------------------------
 
+-- Counts occurrences of a color in a code
+countColor :: Peg -> Code -> Int
+countColor color code = length $ filter (== color) code
+
 -- For each peg in xs, count how many times is occurs in ys
 countColors :: Code -> [Int]
-countColors = undefined
+countColors code = [ countColor c code | c <- colors ]
 
 -- Count number of matches between the actual code and the guess
 matches :: Code -> Code -> Int
-matches = undefined
+matches x y = sum $ map (uncurry min) $ zip (countColors x) (countColors y)
 
 -- Exercise 3 -----------------------------------------
 
