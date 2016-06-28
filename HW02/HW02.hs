@@ -70,12 +70,16 @@ filterCodes move codes = [ x | x <- codes, isConsistent move x ]
 -- Exercise 6 -----------------------------------------
 
 allCodes :: Int -> [Code]
-allCodes = undefined
+allCodes 0 = [[]]
+allCodes n = [ color : codes | color <- colors, codes <- allCodes (n - 1) ]
 
 -- Exercise 7 -----------------------------------------
 
 solve :: Code -> [Move]
-solve = undefined
+solve secret = makeMove (allcodes (length secret))
+    where makeMove :: [Code] -> [Move]
+          makeMove [] = []
+          makeMove x:xs = getMove secret x : makeMove (filterCodes (nextMove xs))
 
 -- Bonus ----------------------------------------------
 
